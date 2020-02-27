@@ -1,0 +1,37 @@
+<html>
+  <body>
+    <p id="ans"></p>
+  </body>
+
+  <script>
+    const get = k => new URLSearchParams(window.location.search).get(k)
+    const nlv = (v1, v2) => v1 ? v1 : v2
+    const redirect = (i, n, ans) => {
+      const go = url => location.href = url + "?i=" + i + "&n=" + n + "&ans=" + ans
+
+      switch (true) {
+        case i % 15 == 0:
+          go("./fizzbuzz.html")
+          break
+        case i % 5  == 0:
+          go("./buzz.html")
+          break
+        case i % 3  == 0:
+          go("./fizz.html")
+          break
+        default:
+          go("./num.html")
+      }
+    }
+
+    const i   = nlv(parseInt(get("i")), 0)
+    const n   = nlv(parseInt(get("n")), 100)
+    const ans = nlv(get("ans"), "")
+
+    if (i == n) {
+      document.getElementById("ans").innerHTML = ans.split(",").join("<br>")
+    } else {
+      redirect(i + 1, n, ans)
+    }
+  </script>
+</html>

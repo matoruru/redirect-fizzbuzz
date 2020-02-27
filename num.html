@@ -1,0 +1,6 @@
+<html>
+  <script>
+    const get = k => new URLSearchParams(window.location.search).get(k)
+    location.href = location.href.replace("num", "index") + get("i") + ","
+  </script>
+</html>
