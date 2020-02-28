@@ -28,7 +28,7 @@
     const n   = nlv(parseInt(get("n")), 100)
     const ans = nlv(get("ans"), "")
 
-    if (i == n) {
+    if (i >= n) {
       document.getElementById("ans").innerHTML = ans.split(",").join("<br>")
     } else {
       redirect(i + 1, n, ans)
